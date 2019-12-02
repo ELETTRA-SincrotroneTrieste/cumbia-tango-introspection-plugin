@@ -1,5 +1,12 @@
+isEmpty(INSTALL_ROOT) {
+    INSTALL_ROOT = /usr/local/cumbia-libs
+}
 
-include(/usr/local/cumbia-libs/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
+include($${INSTALL_ROOT}/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
+
+!versionAtLeast(VERSION, 1.0.2) {
+error ("required cumbia-qtcontrols version >= 1.0.2: current version is $${VERSION} ($${VERSION_HEX})")
+}
 
 !exists(/usr/local/cumbia-libs/include/qumbia-plugins/cuintrospectionplugin.h) {
     error("The cumbia-tango-introspection-plugin requires the cumbia-qtcontrols-introspection-plugin as dependency")
@@ -22,7 +29,7 @@ PKGCONFIG += cumbia-tango
 
 TARGET = cumbia-tango-introspection-plugin
 TEMPLATE = lib
-CONFIG += plugin c++11
+CONFIG += plugin c++17
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -34,8 +41,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
-LIBS += -L$${DEFINES_CUMBIA_QTCONTROLS_PLUGIN_DIR} -lcumbia-qtcontrols-introspection-plugin
 
 INC_PATH = $${INSTALL_ROOT}/include/qumbia-plugins
 inc.files = src/cutangointrospectionplugin.h
