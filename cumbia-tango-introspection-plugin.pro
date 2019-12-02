@@ -30,6 +30,7 @@ PKGCONFIG += cumbia-tango
 TARGET = cumbia-tango-introspection-plugin
 TEMPLATE = lib
 CONFIG += plugin c++17
+VERSION = 1.1.0
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
