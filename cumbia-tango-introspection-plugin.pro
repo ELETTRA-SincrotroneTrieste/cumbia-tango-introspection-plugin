@@ -8,10 +8,10 @@ include($${INSTALL_ROOT}/include/cumbia-qtcontrols/cumbia-qtcontrols.pri)
 error ("required cumbia-qtcontrols version >= 1.0.2: current version is $${VERSION} ($${VERSION_HEX})")
 }
 
-!exists(/usr/local/cumbia-libs/include/qumbia-plugins/cuintrospectionplugin.h) {
+!exists($${INSTALL_ROOT}/include/qumbia-plugins/cuintrospectionplugin.h) {
     error("The cumbia-tango-introspection-plugin requires the cumbia-qtcontrols-introspection-plugin as dependency")
 } else {
-    unix:INCLUDEPATH += /usr/local/cumbia-libs/include/qumbia-plugins
+    unix:INCLUDEPATH += $${INSTALL_ROOT}/include/qumbia-plugins
 }
 
 SOURCES += \
@@ -30,7 +30,6 @@ PKGCONFIG += cumbia-tango
 TARGET = cumbia-tango-introspection-plugin
 TEMPLATE = lib
 CONFIG += plugin c++17
-VERSION = 1.1.0
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
