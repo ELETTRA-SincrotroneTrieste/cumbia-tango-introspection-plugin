@@ -4,6 +4,7 @@
 #include <cumbiaintrospectionplugin_i.h>
 #include <QObject>
 #include <QMap>
+#include <QString>
 
 class CuTangoIntrospectionPluginPrivate;
 
@@ -38,11 +39,10 @@ private:
 
     // CumbiaIntrospectionPlugin_I interface
 public:
-    void init(Cumbia *cumbia, const QStringList &name_search_keys);
+    void init(Cumbia *cumbia);
     int getThreadCount() const;
     void installEngineExtension(CuIntrospectionEngineExtensionI *eei);
     void update();
-    QString findName(const CuData &data_tok) const;
     QMap<QString, ThreadInfo> getThreadInfo();
     const ThreadInfo getThreadInfo(const QString &name);
     QStringList errors() const;

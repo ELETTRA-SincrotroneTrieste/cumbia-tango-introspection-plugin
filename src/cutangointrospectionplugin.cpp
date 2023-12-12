@@ -102,10 +102,10 @@ QString CuTangoIntrospectionExtension::dialogHeading() const {
     return QString("cumbia Tango inspector plugin. cumbia-qtcontrols version %1").arg(CUMBIA_QTCONTROLS_VERSION_STR);
 }
 
-void CuTangoIntrospectionPlugin::init(Cumbia *cumbia, const QStringList &name_search_keys)
+void CuTangoIntrospectionPlugin::init(Cumbia *cumbia)
 {
     if(d->cu_introspection_plugin)
-        d->cu_introspection_plugin->init(cumbia, name_search_keys);
+        d->cu_introspection_plugin->init(cumbia);
 }
 
 int CuTangoIntrospectionPlugin::getThreadCount() const
@@ -125,13 +125,6 @@ void CuTangoIntrospectionPlugin::update()
 {
     if(d->cu_introspection_plugin)
         d->cu_introspection_plugin->update();
-}
-
-QString CuTangoIntrospectionPlugin::findName(const CuData &data_tok) const
-{
-    if(d->cu_introspection_plugin)
-        return d->cu_introspection_plugin->findName(data_tok);
-    return QString();
 }
 
 QMap<QString, ThreadInfo> CuTangoIntrospectionPlugin::getThreadInfo()
